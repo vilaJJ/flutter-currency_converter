@@ -10,18 +10,23 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  flutter_launcher_icons: ^0.14.1
+  flutter_masked_text2: ^0.9.1
+  rename: ^3.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.14.1
   flutter_lints: ^4.0.0
 
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: assets/images/app_icon.png
+  image_path: "assets/images/app_icon.png"
   remove_alpha_ios: true
+  min_sdk_android: 21
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  adaptive_icon_background: "#ffffff"
 
 flutter:
   uses-material-design: true

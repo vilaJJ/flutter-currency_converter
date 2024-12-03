@@ -9,17 +9,17 @@ class MockCurrencyRepository implements ICurrencyRepository {
       currency: Currency.real,
       conversions: {
         Currency.real: 1.0,
-        Currency.dolar: 0.18,
+        Currency.dollar: 0.18,
         Currency.euro: 0.15,
         Currency.bitcoin: 0.000016,
       },
     ),
     CurrencyModel(
       id: "a2cec44a-0740-4fc7-a383-2c08a642cca7",
-      currency: Currency.dolar,
+      currency: Currency.dollar,
       conversions: {
         Currency.real: 5.65,
-        Currency.dolar: 1.0,
+        Currency.dollar: 1.0,
         Currency.euro: 0.85,
         Currency.bitcoin: 0.000088,
       },
@@ -29,7 +29,7 @@ class MockCurrencyRepository implements ICurrencyRepository {
       currency: Currency.euro,
       conversions: {
         Currency.real: 5.62,
-        Currency.dolar: 1.17,
+        Currency.dollar: 1.17,
         Currency.euro: 1.0,
         Currency.bitcoin: 0.0001,
       },
@@ -39,7 +39,7 @@ class MockCurrencyRepository implements ICurrencyRepository {
       currency: Currency.bitcoin,
       conversions: {
         Currency.real: 64116.51,
-        Currency.dolar: 11351.30,
+        Currency.dollar: 11351.30,
         Currency.euro: 9689.54,
         Currency.bitcoin: 1.0,
       },
@@ -47,7 +47,11 @@ class MockCurrencyRepository implements ICurrencyRepository {
   ];
 
   @override
-  Future<List<CurrencyModel>> getAll() async {
-    return await Future.value(_currencies);
+  Future<CurrencyModel> getByAcronym(String acronym) async {
+    final currency = _currencies.firstWhere(
+      (item) => item.currency.acronym == acronym,
+    );
+
+    return await Future.value(currency);
   }
 }

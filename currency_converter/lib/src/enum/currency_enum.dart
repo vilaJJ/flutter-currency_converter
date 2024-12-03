@@ -8,13 +8,14 @@ enum Currency {
     acronym: "BTC",
     commercialName: "Bitcoin",
     symbol: null,
+    ignoreFormatters: true,
   ),
   euro(
     acronym: "EUR",
     commercialName: "Euro",
     symbol: "€",
   ),
-  dolar(
+  dollar(
     acronym: "USD",
     commercialName: "Dollar",
     symbol: "\$",
@@ -24,9 +25,21 @@ enum Currency {
     required this.acronym,
     required this.commercialName,
     required this.symbol,
+    this.ignoreFormatters = false,
   });
 
   final String acronym;
   final String commercialName;
   final String? symbol;
+  final bool ignoreFormatters;
+
+  String get presentationName {
+    String value = acronym;
+
+    if (symbol is String) {
+      value += " ($symbol)";
+    }
+
+    return value;
+  }
 }
